@@ -1,13 +1,7 @@
-import React from 'react';
-
-import './App.css';
-
+import React from "react";
+import LandingPage from "./components/landingPage.js";
 function App() {
-  return (
-    <div >
-      Course managmant systems12
-    </div>
-  );
+  return <LandingPage />;
 }
 
 export default App;
