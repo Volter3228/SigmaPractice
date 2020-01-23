@@ -13,11 +13,11 @@ const FontStyle = {
   fontSize: "18px",
   fontFamily: "Font Awesome 5 Brands Regular"
 };
-let URL_href = window.location.href;
+let URL_href = window.location.pathname;
 function Click() {
   if (
-    URL_href === "http://localhost:3000/Autorisation" ||
-    URL_href === "http://localhost:3000/Courses"
+    URL_href === "/Autorisation" ||
+    URL_href === "/Courses"
   ) {
     return "/";
   } else {
@@ -50,12 +50,12 @@ const Courses = () => {
     <Navbar.Collapse className="justify-content-end">
       <Nav defaultActiveKey="/" as="ul">
         <Nav.Item as="li">
-          <Nav.Link style={FontStyle} href="http://localhost:3000/Autorisation">
+          <Nav.Link style={FontStyle} href="/Autorisation">
             Autorisation
           </Nav.Link>
         </Nav.Item>
         <Nav.Item as="li">
-          <Nav.Link style={FontStyle} href="http://localhost:3000/Courses">
+          <Nav.Link style={FontStyle} href="/Courses">
             Courses
           </Nav.Link>
         </Nav.Item>
@@ -67,8 +67,8 @@ const Courses = () => {
 const NavbarMenu = () => {
   if (
     !(
-      URL_href === "http://localhost:3000/Autorisation" ||
-      URL_href === "http://localhost:3000/Courses"
+      URL_href === "/Autorisation" ||
+      URL_href === "/Courses"
     )
   ) {
     return (
