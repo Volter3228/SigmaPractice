@@ -25,7 +25,7 @@
     background: rgba(248, 177, 149, 0.8);
 }
 
-.title, a, .login-btn, .subtitle, .login-input, .checkbox-container {
+.title, a, input[type=text], input[type=password], .login-btn, .subtitle, .login-input, .checkbox-container {
     color: #6C5B7B;
     font-weight: bold;
     font-style: normal;
@@ -46,7 +46,7 @@
     color: rgba(108, 91, 123, 0.5);
 }
 
-.login-input {
+input[type=text], input[type=password] {
     width: 100%;
     font-weight: bold;
     font-size: 24px;
@@ -58,9 +58,18 @@
     padding: 25px;
 }
 
-.login-input:focus {
+input[type=text]:focus, input[type=password]:focus {
     outline: #e4829e solid 3px ;
     box-shadow: 0 0 10px #e4829e;
+}
+
+.input-feedback {
+    position: absolute;
+    color: rgb(235, 54, 54);
+    margin-top: -15px ;
+    font-size: 14px;
+    margin-bottom: 10px;
+    float: left;
 }
 
 .login-btn {
@@ -103,6 +112,7 @@ input[type=checkbox].checkbox {
 }
 
 label.checkbox-container {
+    margin-top: 15px;
     padding-left:33px;
     border: 0;
     float: left;

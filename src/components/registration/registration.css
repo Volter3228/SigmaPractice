@@ -1,0 +1,91 @@
+.inner-container {
+    background-color: '#f7f7f7';
+    margin: 0;
+    padding: 0;
+    position: "absolute"; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.register-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    max-width: 600px;
+    width: 100%;
+    height: 900px;
+    padding: 15px 100px 125px 100px;
+    text-align: center ;
+    border-radius: 20px;
+    background: rgba(248, 177, 149, 0.8);
+}
+
+.title, a, .login-btn, .subtitle, input[type=text], input[type=password], .register-btn {
+    color: #6C5B7B;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.title {
+    font-size: 96px;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
+}
+
+.subtitle {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+::placeholder {
+    color: rgba(108, 91, 123, 0.5);
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    font-weight: bold;
+    font-size: 24px;
+    border: 3px solid #C06C84;
+    background-color: rgba(255, 255, 255, 0);
+    font-style: normal;
+    margin: 25px 0;
+    height: 60px;
+    padding: 25px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    outline: #e4829e solid 3px ;
+    box-shadow: 0 0 10px #e4829e;
+}
+
+.input-feedback {
+    position: absolute;
+    color: rgb(235, 54, 54);
+    font-size: 14px;
+    float: left;
+    float:left;
+}
+
+.register-btn {
+    margin: 25px 0;
+    width: 100%;
+    height: 65px;
+    border-radius: 10px;
+    background: #C06C84;
+    border: 3px solid #C06C84;
+    font-size: 24px;
+}
+
+.register-btn:hover {
+    background: rgb(173, 97, 119);
+    border: 3px solid rgb(173, 97, 119);
+}
+
+a {
+    font-size: 16px;
+}
