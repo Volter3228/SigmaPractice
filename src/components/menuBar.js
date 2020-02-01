@@ -1,8 +1,8 @@
 import React from "react";
 import LogoImg from "./NavLogo.png";
 import { Figure, Navbar, Nav } from "react-bootstrap";
-import AutorisationPage from "./autorisation/autorisation.js";
-import CoursesPage from "./autorisation/autorisation.js";
+// import AutorisationPage from "./autorisation/autorisation.js";
+// import CoursesPage from "./autorisation/autorisation.js";
 const Pad0 = {
   padding: 0,
   margin: 0
@@ -16,7 +16,7 @@ const FontStyle = {
 let URL_href = window.location.pathname;
 function Click() {
   if (
-    URL_href === "/Autorisation" ||
+    URL_href === "/Authorization" ||
     URL_href === "/Courses"
   ) {
     return "/";
@@ -50,8 +50,8 @@ const Courses = () => {
     <Navbar.Collapse className="justify-content-end">
       <Nav defaultActiveKey="/" as="ul">
         <Nav.Item as="li">
-          <Nav.Link style={FontStyle} href="/Autorisation">
-            Autorisation
+          <Nav.Link style={FontStyle} href="/Authorization">
+            Authorization
           </Nav.Link>
         </Nav.Item>
         <Nav.Item as="li">
@@ -73,7 +73,7 @@ const NavbarMenu = () => {
   ) {
     return (
       <Navbar
-        style={{ backgroundColor: "#002850", height: "60px" }}
+        style={{ backgroundColor: "#6C5B7B", height: "60px" }}
         fixed="top"
       >
         <Logotype />
@@ -83,7 +83,7 @@ const NavbarMenu = () => {
   } else {
     return (
       <Navbar
-        style={{ backgroundColor: "#002850", height: "60px" }}
+        style={{ backgroundColor: "#6C5B7B", height: "60px" }}
         fixed="top"
       >
         <Logotype />
