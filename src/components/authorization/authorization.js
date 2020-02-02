@@ -3,10 +3,12 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import "./authorization.css";
 
-const AuthorizationPage = () => (
+const AuthorizationPage = props => (
   <Formik
     initialValues={{ email: "", password: "" }}
     onSubmit={(values, { setSubmitting }) => {
+      props.getTokenAsync(values);
+   
       console.log("Submitting");
       console.log(values);
     }}
@@ -17,30 +19,6 @@ const AuthorizationPage = () => (
 
       password: Yup.string().required("Required")
     })}
-    // validate = { values => {
-    //   let errors = {};
-
-    //   if (!values.email) {
-    //     errors.email = "Required"
-    //   }
-    //   else if (!EmailValidator.validate(values.email)) {
-    //     errors.email = "Invalid Email Address";
-    //   }
-
-    // const passwordRegex = /(?=.*[0-9])/;
-
-    //   if (!values.password) {
-    //     errors.password = "Required"
-    //   }
-    //   else if(values.password.lenght < 8) {
-    //     errors.password = "Password must be 8 characters long."
-    //   }
-    //   else if (!passwordRegex.test(values.password)) {
-    //     errors.password = "Invalid password. Must contain at least 1 number."
-    //   }
-
-    //   return errors;
-    // }}
   >
     {props => {
       const {
@@ -94,12 +72,7 @@ const AuthorizationPage = () => (
                   Remember me
                 </label>
               </div>
-              <input
-                disabled={isSubmitting}
-                type="submit"
-                value="LOGIN"
-                className="login-btn"
-              />
+              <input type="submit" value="LOGIN" className="login-btn" />
             </form>
             <a style={{ float: "left" }} href="/Registration">
               Register
