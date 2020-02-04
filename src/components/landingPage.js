@@ -40,6 +40,23 @@ async function getTokenAsync(values, updateAdmin) {
     console.log("Error: ", response.status, data.errorText);
   }
 }
+async function setDataToDB(url, postData, windowLocation) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(postData)
+  });
+
+  const data = await response.json();
+  if (response.ok === true) {
+    window.location = windowLocation;
+    console.log(data);
+  } else {
+    console.log("Error: ", response.status, data.errorText);
+  }
+}
 
 //Бере токен із сесії теперішньої і якщо токен існує то ти авторизований і тобі даються дані
 //якщо токена вже не існує, то виводить 401, що ти не авторизований
@@ -121,7 +138,7 @@ export default class LandingPage extends React.Component {
             <CoursesPage />
           </Route>
           <Route exact path="/Registration">
-            <RegistrationPage />
+            <RegistrationPage setDataToDB={setDataToDB} />
           </Route>
           <Route exact path="/AdminPage">
             <AdminPage getDataFromApi={getDataFromApi} />

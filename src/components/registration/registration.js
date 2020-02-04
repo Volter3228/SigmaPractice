@@ -3,7 +3,7 @@ import "./registration.css";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-const RegistrationPage = () => (
+const RegistrationPage = props => (
   <Formik
     initialValues={{
       firstName: "",
@@ -14,6 +14,18 @@ const RegistrationPage = () => (
     }}
     onSubmit={(values, { setSubmitting }) => {
       console.log("Submitting");
+
+      let objToPost = {
+        admin_id: 7,
+        admin_email: values.email,
+        admin_password: values.password
+      };
+
+      props.setDataToDB(
+        "https://localhost:44391/api/Admins",
+        objToPost,
+        "/Authorization"
+      );
       console.log(values);
     }}
     validationSchema={Yup.object().shape({
