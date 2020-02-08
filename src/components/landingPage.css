@@ -1,0 +1,31 @@
+.bg {
+    background-image: url("background.png");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.main-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -43%);
+    box-sizing: border-box;
+    max-width: 1500px;
+    height: 730px;
+    border-radius: 20px;
+    background: rgba(248, 177, 149, 0.8);
+    padding: 160px;
+}
+
+Row {
+    width: 80%;
+    height: 400px; 
+    padding:0;
+    margin: 0; 
+    position: absolute; 
+    top: 50%;
+    transform:translateY(-50%);
+}
