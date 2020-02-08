@@ -7,11 +7,18 @@ import CoursesPage from "./courses/coursesMainPage.js";
 import MenuBar from "./menuBar.js";
 import AdminPage from "./profile/adminPage.js";
 import LogoImg from "./NavLogo.png";
+<<<<<<< HEAD
 import UserPage from "./profile/userPage/userPage.js";
 
 import { Figure, Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 //import { getAllByDisplayValue } from "@testing-library/react";
+=======
+
+import { Figure, Container, Button, Row, Col } from "react-bootstrap";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { getAllByDisplayValue } from "@testing-library/react";
+>>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
 const url = "https://localhost:44391/api/Admins";
 
 let tokenKey = "accessToken";
@@ -41,6 +48,26 @@ async function getTokenAsync(values, updateAdmin) {
     console.log("Error: ", response.status, data.errorText);
   }
 }
+<<<<<<< HEAD
+=======
+async function setDataToDB(url, postData, windowLocation) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(postData)
+  });
+
+  const data = await response.json();
+  if (response.ok === true) {
+    window.location = windowLocation;
+    console.log(data);
+  } else {
+    console.log("Error: ", response.status, data.errorText);
+  }
+}
+>>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
 
 //Бере токен із сесії теперішньої і якщо токен існує то ти авторизований і тобі даються дані
 //якщо токена вже не існує, то виводить 401, що ти не авторизований
@@ -109,6 +136,12 @@ export default class LandingPage extends React.Component {
           <Container fluid>
             <MenuBar />
           </Container> 
+<<<<<<< HEAD
+=======
+          <Container fluid>
+          
+          </Container>
+>>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
           <Route exact path="/">
             <MainPage />
           </Route>
@@ -119,14 +152,21 @@ export default class LandingPage extends React.Component {
             <CoursesPage />
           </Route>
           <Route exact path="/Registration">
+<<<<<<< HEAD
             <RegistrationPage />
+=======
+            <RegistrationPage setDataToDB={setDataToDB} />
+>>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
           </Route>
           <Route exact path="/AdminPage">
             <AdminPage getDataFromApi={getDataFromApi} />
           </Route>
+<<<<<<< HEAD
           <Route exact path="/UserPage">
             <UserPage getDataFromApi={getDataFromApi} />
           </Route>
+=======
+>>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
         </div>
       </Router>
     );

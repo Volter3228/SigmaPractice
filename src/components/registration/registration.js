@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 import React  from "react";
+=======
+import React, { Component } from "react";
+>>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
 import "./registration.css";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
+<<<<<<< HEAD
 const RegistrationPage = () => (
+=======
+const RegistrationPage = props => (
+>>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
   <Formik
     initialValues={{
       firstName: "",
@@ -14,6 +22,21 @@ const RegistrationPage = () => (
     }}
     onSubmit={(values, { setSubmitting }) => {
       console.log("Submitting");
+<<<<<<< HEAD
+=======
+
+      let objToPost = {
+        admin_id: 7,
+        admin_email: values.email,
+        admin_password: values.password
+      };
+
+      props.setDataToDB(
+        "https://localhost:44391/api/Admins",
+        objToPost,
+        "/Authorization"
+      );
+>>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
       console.log(values);
     }}
     validationSchema={Yup.object().shape({
@@ -49,8 +72,13 @@ const RegistrationPage = () => (
       return (
         <div className="inner-container">
           <div className="register-box">
+<<<<<<< HEAD
             <h1 className="register-title">P</h1>
             <h3 className="register-subtitle">Pustota</h3>
+=======
+            <h1 className="title">P</h1>
+            <h3 className="subtitle">Pustota</h3>
+>>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
 
             <form onSubmit={handleSubmit}>
               <input
