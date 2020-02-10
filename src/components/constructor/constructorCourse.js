@@ -8,7 +8,7 @@ export default class Constructor extends React.Component {
     this.state = {
       courseName: "",
       courseDescription: "",
-      amountLessons: ""
+      amountLessons: "" 
     };
   }
   render() {
@@ -19,9 +19,9 @@ export default class Constructor extends React.Component {
         <p className="constructor-font">Add course description:</p>
         <textarea className="constructor-text-area"></textarea>
         <p className="constructor-font">Enter amount of lessons::</p>
-        <input className="constructor-input-amount"></input>
+    
         <br />
-        <Button className="myButton">Add the lesson</Button>
+        <Button className="myButton">Add the blocks</Button>
       </Container>
     );
   }

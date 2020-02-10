@@ -8,7 +8,7 @@ import MenuBar from "./menuBar.js";
 import AdminPage from "./profile/adminPage.js";
 import LogoImg from "./NavLogo.png";
 import UserPage from "./profile/userPage/userPage.js";
-import Constructor from "./constructor/constructor.js";
+import Constructor from "./constructor/constructorCourse.js";
 import { Figure, Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 //import { getAllByDisplayValue } from "@testing-library/react";
