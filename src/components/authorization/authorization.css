@@ -14,55 +14,32 @@
     position: absolute;
     top: 50%;
     left: 50%;
-<<<<<<< HEAD
     transform: translate(-50%, -43%);
     box-sizing: border-box;
     max-width: 600px;
     width: 100%;
     height: 700px;
     padding: 40px 100px 125px 100px;
-=======
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    max-width: 600px;
-    width: 100%;
-    height: 800px;
-    padding: 70px 100px 125px 100px;
->>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
     text-align: center ;
     border-radius: 20px;
     background: rgba(248, 177, 149, 0.8);
 }
 
-<<<<<<< HEAD
 .login-title, a, input[type=text], input[type=password], .login-btn, .login-subtitle, .login-input, .checkbox-container {
-=======
-.title, a, input[type=text], input[type=password], .login-btn, .subtitle, .login-input, .checkbox-container {
->>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
     color: #6C5B7B;
     font-weight: bold;
     font-style: normal;
 }
 
-<<<<<<< HEAD
 .login-title {
-=======
-.title {
->>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
     font-size: 96px;
     margin-bottom: 10px;
     padding-bottom: 0px;
 }
 
-<<<<<<< HEAD
 .login-subtitle {
     font-size: 36px;
     padding-bottom: 40px;
-=======
-.subtitle {
-    font-size: 36px;
-    margin-bottom: 40px;
->>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
 }
 
 ::placeholder {

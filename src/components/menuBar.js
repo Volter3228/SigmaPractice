@@ -15,11 +15,7 @@ const navbar = {
   backgroundColor: "#6C5B7B",
   height: "100px",
   margin: "10px 20px 0 20px",
-<<<<<<< HEAD
   padding: "10px 30px",
-=======
-  padding: "20px 30px",
->>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
   background: "rgba(248, 177, 149, 0.8)",
   borderRadius: "20px"
 };
@@ -64,12 +60,8 @@ function Click() {
   if (
     URL_href === "/Authorization" ||
     URL_href === "/Courses" ||
-<<<<<<< HEAD
     URL_href === "/AdminPage" || 
     URL_href === "/Registration"
-=======
-    URL_href === "/AdminPage"
->>>>>>> c080d22b3ad0942047f1a3f79e4230c2bc5bfe07
   ) {
     return "/";
   } else {

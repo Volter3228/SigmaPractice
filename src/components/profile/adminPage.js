@@ -15,7 +15,7 @@ export default class AdminPage extends React.Component {
         <Button
           onClick={() => {
             let res = this.props.getDataFromApi(
-              "https://localhost:44391/api/values/getlogin"
+              "https://localhost:5001/api/values/getlogin"
             );
             res.then(values => {
               this.setState({ login: values });
@@ -34,7 +34,15 @@ export default class AdminPage extends React.Component {
           log out
         </Button>
         <br />
-        login:{this.state.login}
+        login:             {this.state.login}
+        <br />
+        <Button
+          onClick={() => {
+            window.location = "/Constructor";
+          }}
+        >
+          create course
+        </Button>
       </Container>
     );
   }
