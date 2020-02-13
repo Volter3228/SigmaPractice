@@ -2,41 +2,72 @@ import React from "react";
 import "./constructorBlock.css";
 import { Container, Button, Table, Row, Col } from "react-bootstrap";
 
-const TD = props => {
+function getCourse() {
+  return JSON.parse(localStorage.getItem("course"));
+}
+function getBlock() {
+  return JSON.parse(localStorage.getItem("block"));
+}
+function getLesson() {
+  return JSON.parse(localStorage.getItem("lesson"));
+}
+function setLesson(obj) {
+  localStorage.setItem("lesson", JSON.stringify(obj));
+}
+function setCourse(obj) {
+  localStorage.setItem("course", JSON.stringify(obj));
+}
+function setBlock(obj) {
+  localStorage.setItem("block", JSON.stringify(obj));
+}
+
+const TR = ({ rowIndex, name }) => {
   return (
-    <td
-      style={{ width: "20px", height: "10px" }}
+    <tr
       onClick={() => {
+        let currentLesson = getBlock().blockLessons.find(
+          el => el.lessonId === rowIndex
+        );
+        setLesson(currentLesson);
+        console.log(getBlock().blockLessons[rowIndex]);
         window.location = "/Constructor/Block/Lesson/Content";
       }}
     >
-      {props.data}
-    </td>
-  );
-};
-const TR = ({ rowIndex, data }) => {
-  return (
-    <tr>
-      {data.map((el, i) => (
-        <TD data={el} rowIndex={rowIndex} colIndex={i} />
-      ))}
+      <td style={{ width: "20px", height: "10px" }}>{rowIndex}</td>
+      <td style={{ width: "20px", height: "10px" }}>{name}</td>
     </tr>
   );
 };
-export default class ConstructorBlock extends React.Component {
+
+export default class ConstructorLesson extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      block: []
+      storageBlock: JSON.parse(localStorage.getItem("block"))
     };
   }
-  componentDidMount() {
-    let block = [];
-    let obj = [1, "BlockName"];
-
-    this.setState({ block: block });
-  }
-
+  createLesson = () => {
+    let storageCourse = getCourse();
+    let storageBlock = getBlock();
+    let storageLesson = getLesson();
+    storageLesson.lessonId = getBlock().blockLessons.length + 1;
+    storageLesson.lessonId -= 1;
+    storageLesson.lessonName = "newLesson";
+    storageBlock.blockLessons.push(storageLesson);
+    storageCourse.courseBlocks[getBlock().blockId] = storageBlock;
+    setLesson(storageLesson);
+    setBlock(storageBlock);
+    setCourse(storageCourse);
+    this.setState({ storageBlock: storageBlock });
+  };
+  changeBlockName = newName => {
+    let newBlock = getBlock();
+    let newCourse = getCourse();
+    newBlock.blockName = newName;
+    newCourse.courseBlocks[getBlock().blockId] = newBlock;
+    setCourse(newCourse);
+    setBlock(newBlock);
+  };
   render() {
     return (
       <Container>
@@ -44,12 +75,16 @@ export default class ConstructorBlock extends React.Component {
           <p className="constructor-font">Block id:</p>
           <input
             className="constructor-input"
-            defaultValue={JSON.parse(localStorage.getItem("block")).id}
+            defaultValue={getBlock().blockId}
           ></input>
           <p className="constructor-font">Block name:</p>
           <input
+            onChange={v => {
+              let newName = v.target.value;
+              this.changeBlockName(newName);
+            }}
             className="constructor-input"
-            defaultValue={JSON.parse(localStorage.getItem("block")).name}
+            defaultValue={getBlock().blockName}
           ></input>
           <Table responsive="sm" hover borderless>
             <thead>
@@ -59,9 +94,11 @@ export default class ConstructorBlock extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.block.map((el, i) => (
-                <TR data={el} rowIndex={i} />
-              ))}
+              {JSON.parse(localStorage.getItem("block")).blockLessons.map(
+                (el, i) => (
+                  <TR name={el.lessonName} rowIndex={i} />
+                )
+              )}
             </tbody>
           </Table>
         </Container>
@@ -82,17 +119,7 @@ export default class ConstructorBlock extends React.Component {
             <Button
               className="constructorBlock-myButton"
               onClick={() => {
-                let storageCourse = JSON.parse(localStorage.getItem("course"));
-                let currentBlock = JSON.parse(localStorage.getItem("block"));
-                console.log(storageCourse);
-                console.log(currentBlock);
-                storageCourse.block[currentBlock.id - 1][2] += 1;
-                console.log(storageCourse);
-                localStorage.setItem("course", JSON.stringify(storageCourse));
-                let blockArr = [...this.state.block];
-                let obj = [1, "NewLesson"];
-                blockArr.push(obj);
-                this.setState({ block: blockArr });
+                this.createLesson();
               }}
             >
               Add new lesson

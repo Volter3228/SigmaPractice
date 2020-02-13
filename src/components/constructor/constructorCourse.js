@@ -10,21 +10,43 @@ export default class ConstructorCourse extends React.Component {
       description: ""
     };
   }
-  updateStorage = () => {
+  createStorage = () => {
     let course = {
-      name: "testName",
-      description: "testDescr",
-      block: []
+      courseId: 0,
+      courseName: "",
+      courseDescription: "",
+      courseBlocks: []
     };
-    
+    let block = {
+      blockId: -1,
+      blockName: "",
+      blockLessons: []
+    };
+    let lesson = {
+      lessonId: -1,
+      lessonName: "",
+      lessonContent: ""
+    };
+    let content = "";
+
     localStorage.setItem("course", JSON.stringify(course));
-    let storageObj = JSON.parse(localStorage.getItem("course"));
+    localStorage.setItem("block", JSON.stringify(block));
+    localStorage.setItem("lesson", JSON.stringify(lesson));
+    localStorage.setItem("content", JSON.stringify(content));
+    let storageCourse = JSON.parse(localStorage.getItem("course"));
+    storageCourse.courseName = this.state.name;
+    storageCourse.courseDescription = this.state.description;
+    if (storageCourse.courseName === "") {
+      alert("Add course name");
+      return 0;
+    }
 
-    storageObj.name = this.state.name;
-    storageObj.description = this.state.description;
-
-    localStorage.setItem("course", JSON.stringify(storageObj));
+    localStorage.setItem("course", JSON.stringify(storageCourse));
+    return 1;
   };
+
+  componentDidMount() {}
+
   render() {
     return (
       <Container className="constructor-wrapper">
@@ -49,11 +71,20 @@ export default class ConstructorCourse extends React.Component {
         <Button
           className="myButton"
           onClick={() => {
-            this.updateStorage();
-            window.location = "/Constructor/Block";
+            if (this.createStorage()) {
+              window.location = "/Constructor/Block";
+            }
           }}
         >
           Add the blocks
+        </Button>
+        <Button
+          className="myButton"
+          onClick={() => {
+            localStorage.removeItem("block");
+          }}
+        >
+          Clear localStorage
         </Button>
       </Container>
     );
