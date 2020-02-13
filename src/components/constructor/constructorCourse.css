@@ -53,7 +53,7 @@
 
 .constructor-text-area {
     height: 300px;
-    width: 1500px;
+    width: 100%;
     outline: none;
     padding: 10px;
     background: rgba(248, 177, 149, 0.5);

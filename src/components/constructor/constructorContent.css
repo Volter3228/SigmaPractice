@@ -1,0 +1,24 @@
+.constructorContent-wrapper {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -42%);
+    box-sizing: border-box;
+    max-width: 80%;
+    height: 70%;
+    border-radius: 20px;
+
+
+}
+
+.constructorContent-text-area {
+    height: 70%;
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    background: rgba(248, 177, 149, 0.5);
+    border: 10px solid #F8B195;
+    border-radius: 20px;
+
+
+}

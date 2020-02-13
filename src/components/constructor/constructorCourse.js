@@ -1,27 +1,60 @@
 import React from "react";
-import "./constructor.css";
+import "./constructorCourse.css";
 import { Container, Button } from "react-bootstrap";
 
-export default class Constructor extends React.Component {
+export default class ConstructorCourse extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      courseName: "",
-      courseDescription: "",
-      amountLessons: "" 
+      name: "",
+      description: ""
     };
   }
+  updateStorage = () => {
+    let course = {
+      name: "testName",
+      description: "testDescr",
+      block: []
+    };
+    
+    localStorage.setItem("course", JSON.stringify(course));
+    let storageObj = JSON.parse(localStorage.getItem("course"));
+
+    storageObj.name = this.state.name;
+    storageObj.description = this.state.description;
+
+    localStorage.setItem("course", JSON.stringify(storageObj));
+  };
   render() {
     return (
       <Container className="constructor-wrapper">
         <p className="constructor-font">Add course name:</p>
-        <input className="constructor-input"></input>
+        <input
+          className="constructor-input"
+          onChange={v => {
+            let value = v.target.value;
+
+            this.setState({ name: value });
+          }}
+        ></input>
         <p className="constructor-font">Add course description:</p>
-        <textarea className="constructor-text-area"></textarea>
-        <p className="constructor-font">Enter amount of lessons::</p>
-    
+        <textarea
+          className="constructor-text-area"
+          onChange={v => {
+            let value = v.target.value;
+            this.setState({ description: value });
+          }}
+        ></textarea>
         <br />
-        <Button className="myButton">Add the blocks</Button>
+        <Button
+          className="myButton"
+          onClick={() => {
+            this.updateStorage();
+            window.location = "/Constructor/Block";
+          }}
+        >
+          Add the blocks
+        </Button>
       </Container>
     );
   }

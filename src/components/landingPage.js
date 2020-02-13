@@ -8,20 +8,24 @@ import MenuBar from "./menuBar.js";
 import AdminPage from "./profile/adminPage.js";
 import LogoImg from "./NavLogo.png";
 import UserPage from "./profile/userPage/userPage.js";
-import Constructor from "./constructor/constructorCourse.js";
+import ConstructorCourse from "./constructor/constructorCourse.js";
+import ConstructorBlock from "./constructor/constructorBlock.js";
+import ConstructorLesson from "./constructor/constructorLesson.js";
+import ConstructorContent from "./constructor/constructorContent.js";
 import { Figure, Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 //import { getAllByDisplayValue } from "@testing-library/react";
-const url = "https://localhost:5001/api/Admins";
 
 let tokenKey = "accessToken";
+let url = "https://localhost:5001/api/";
+let role = "user";
+
 async function getApiData() {
   const response = await fetch(url);
   const myJson = await response.json();
   alert(JSON.stringify(myJson));
   console.log(JSON.stringify(myJson));
 }
-
 async function getTokenAsync(values, updateAdmin) {
   let formData = new FormData();
   //formData.append("grand_type", "password");
@@ -35,7 +39,16 @@ async function getTokenAsync(values, updateAdmin) {
   });
   const data = await response.json();
   if (response.ok === true) {
-    window.location = "/AdminPage";
+    role = data.role;
+    if (role === "admin") {
+      role = "Admin";
+    } else if (role === "teacher") {
+      role = "Teacher";
+    } else if (role === "user") {
+      role = "User";
+    }
+    window.location = `/${role}Page`;
+    url = `https://localhost:5001/api/${role}s`;
     sessionStorage.setItem(tokenKey, data.access_token);
     console.log(data.access_token);
   } else {
@@ -61,7 +74,6 @@ async function getDataFromApi(url) {
 
   if (response.ok === true) {
     let data = await response.json();
-
     console.log(data);
     return data;
   } else console.log("Status: ", response.status);
@@ -108,11 +120,14 @@ const MainPage = () => {
 };
 
 export default class LandingPage extends React.Component {
-  state = {
-    person: null,
-    adminData: null
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      course: []
+    };
+  }
+  componentDidMount() {}
+  setCourse = course => {};
   render() {
     return (
       <Router>
@@ -139,7 +154,16 @@ export default class LandingPage extends React.Component {
             <UserPage getDataFromApi={getDataFromApi} />
           </Route>
           <Route exact path="/Constructor">
-            <Constructor />
+            <ConstructorCourse />
+          </Route>
+          <Route exact path="/Constructor/Block">
+            <ConstructorBlock setCourse={this.setCourse()} />
+          </Route>
+          <Route exact path="/Constructor/Block/Lesson">
+            <ConstructorLesson />
+          </Route>
+          <Route exact path="/Constructor/Block/Lesson/Content">
+            <ConstructorContent />
           </Route>
         </div>
       </Router>
