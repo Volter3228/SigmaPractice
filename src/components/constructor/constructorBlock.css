@@ -1,0 +1,36 @@
+.constructorBlock-wrapper {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -42%);
+    box-sizing: border-box;
+    max-width: 80%;
+    height: 70%;
+    border-radius: 20px;
+    background: rgba(248, 177, 149, 0.5);
+
+}
+
+.constructorBlock-myButton {
+    width: 250px;
+    height: 50px;
+    background-color: #C06C84;
+    border-radius: 10px;
+    border: 1px solid #C06C84;
+    display: inline-block;
+    cursor: pointer;
+    color: #F8B195;
+    font-style: normal;
+    font-weight: bold;
+    font-family: Montserrat;
+    font-size: 18px;
+    line-height: 39px;
+    padding: 9px 31px;
+    text-decoration: none;
+    outline: none;
+}
+
+.constructorBlock-myButton:hover {
+    outline: none;
+    background-color: #F8B195;
+}

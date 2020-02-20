@@ -43,16 +43,16 @@ export default class UserPage extends Component {
             let courseData = [...result.data];
             console.log(courseData);
             courseData.forEach(course => {
-                let obj = {
-                  name: course.courseName,
-                };
-                this.setState(prevState => ({
-                  ...prevState,
-                  userInfo: {
-                    ...prevState.userInfo,
-                    courses: [...prevState.userInfo.courses, obj]
-                  }
-                }));
+              let obj = {
+                name: course.courseName
+              };
+              this.setState(prevState => ({
+                ...prevState,
+                userInfo: {
+                  ...prevState.userInfo,
+                  courses: [...prevState.userInfo.courses, obj]
+                }
+              }));
             });
           });
       });
@@ -69,11 +69,13 @@ export default class UserPage extends Component {
             .slice(0, this.state.showLastCourses)
             .map(course => {
               return (
-                <Container style={{padding: '0 0 40px 0'}} >
-                  <a className="teacher-course-link" href="#">{course.name}</a>
+                <Container style={{ padding: "0 0 40px 0" }}>
+                  <a className="teacher-course-link" href="#">
+                    {course.name}
+                  </a>
                   <h3>amount of subscribers: </h3>
                 </Container>
-              )
+              );
             })}
         </div>
       );
