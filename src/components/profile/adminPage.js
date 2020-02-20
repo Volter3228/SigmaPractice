@@ -5,7 +5,7 @@ export default class AdminPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: ""
+      userId: ""
     };
   }
   render() {
@@ -18,7 +18,7 @@ export default class AdminPage extends React.Component {
               "https://localhost:5001/api/values/getlogin"
             );
             res.then(values => {
-              this.setState({ login: values });
+              this.setState({ userId: values });
             });
             console.log(res);
           }}
@@ -34,15 +34,7 @@ export default class AdminPage extends React.Component {
           log out
         </Button>
         <br />
-        login:             {this.state.login}
-        <br />
-        <Button
-          onClick={() => {
-            window.location = "/Constructor";
-          }}
-        >
-          create course
-        </Button>
+        login:{this.state.login}
       </Container>
     );
   }

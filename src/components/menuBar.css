@@ -1,0 +1,31 @@
+.dropdown-menu {
+    background: #C06C84;
+    margin-top: 34px;
+    text-align: center;
+    right: -60px;
+}
+.dropdown-item {
+    font-family: Montserrat;
+    color: #6C5B7B;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(173, 98, 120);
+    color: #6C5B7B;
+}
+
+.dropdown-toggle::after { 
+    content: none; 
+} 
+
+#toggle:focus, #toggle:active, #toggle:focus:active {
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#toggle {
+    border: none;
+}

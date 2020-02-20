@@ -1,0 +1,34 @@
+.progress-bar {
+    background-color: #6C5B7B;
+}
+
+h3 {
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(108, 91, 123, 0.6);
+}
+
+.course-link { 
+    font-size: 24px;
+    line-height: 39px;
+    color: #6C5B7B;
+}
+
+.info-img {
+    display: inline-block;
+    position: relative;
+    bottom: 6px;
+    margin-left: 12px;
+    width: 30px;
+    height: 30px;
+}
+
+.info-img:hover {
+    background-color: rgb(91, 77, 104);
+}
+
+.course-link, h3 {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+}

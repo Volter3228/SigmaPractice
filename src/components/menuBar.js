@@ -3,7 +3,7 @@ import "./menuBar.css";
 
 import LogoImg from "./NavLogo.png";
 
-import { Figure, Navbar, Nav } from "react-bootstrap";
+import { Figure, Navbar, Nav, Dropdown } from "react-bootstrap";
 // import AutorisationPage from "./autorisation/autorisation.js";
 // import CoursesPage from "./autorisation/autorisation.js";
 const Pad0 = {
@@ -52,7 +52,8 @@ const link = {
   textAlign: "center",
   fontWeight: "bold",
   fontSize: "16px",
-  lineHeight: "20px"
+  lineHeight: "20px",
+  background: "#C06C84"
 };
 
 let URL_href = window.location.pathname;
@@ -60,7 +61,7 @@ function Click() {
   if (
     URL_href === "/Authorization" ||
     URL_href === "/Courses" ||
-    URL_href === "/AdminPage" || 
+    URL_href === "/AdminPage" ||
     URL_href === "/Registration"
   ) {
     return "/";
@@ -127,9 +128,36 @@ const Profile = () => {
       <Navbar.Collapse className="justify-content-end">
         <Nav defaultActiveKey="/">
           <Nav.Item style={profileWrapper}>
-            <Nav.Link style={link} href="/Authorization">
-              U
-            </Nav.Link>
+            <Dropdown style={link}>
+              <Dropdown.Toggle id="toggle" style={link}>U</Dropdown.Toggle>
+
+              <Dropdown.Menu
+                alignRight
+              >
+                {(sessionStorage.userRole === "Admin" && (
+                  <Dropdown.Item href="/AdminPage">My Profile</Dropdown.Item>
+                )) ||
+                  (sessionStorage.userRole === "Teacher" && (
+                    <Dropdown.Item href="/TeacherPage">
+                      My Profile
+                    </Dropdown.Item>
+                  )) ||
+                  (sessionStorage.userRole === "Student" && (
+                    <Dropdown.Item href="/StudentPage">
+                      My Profile
+                    </Dropdown.Item>
+                  ))}
+                <Dropdown.Item href="/Courses">Courses List</Dropdown.Item>
+                <Dropdown.Item href="/"
+                  onClick={() => {
+                    window.sessionStorage.removeItem("accessToken");
+                    window.location.reload(false);
+                  }}
+                >
+                  Log out
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Nav.Item>
         </Nav>
       </Navbar.Collapse>

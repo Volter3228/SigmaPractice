@@ -7,25 +7,23 @@ import CoursesPage from "./courses/coursesMainPage.js";
 import MenuBar from "./menuBar.js";
 import AdminPage from "./profile/adminPage.js";
 import LogoImg from "./NavLogo.png";
-import UserPage from "./profile/userPage/userPage.js";
-import ConstructorCourse from "./constructor/constructorCourse.js";
-import ConstructorBlock from "./constructor/constructorBlock.js";
-import ConstructorLesson from "./constructor/constructorLesson.js";
-import ConstructorContent from "./constructor/constructorContent.js";
+import StudentPage from "./profile/studentPage/studentPage.js";
+import TeacherPage from "./profile/teacherPage/teacherPage.js";
+
 import { Figure, Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 //import { getAllByDisplayValue } from "@testing-library/react";
+let url = "https://localhost:5001/api/";
+let role = "student";
 
 let tokenKey = "accessToken";
-let url = "https://localhost:5001/api/";
-let role = "user";
+// async function getApiData() {
+//   const response = await fetch(url);
+//   const myJson = await response.json();
+//   alert(JSON.stringify(myJson));
+//   console.log(JSON.stringify(myJson));
+// }
 
-async function getApiData() {
-  const response = await fetch(url);
-  const myJson = await response.json();
-  alert(JSON.stringify(myJson));
-  console.log(JSON.stringify(myJson));
-}
 async function getTokenAsync(values, updateAdmin) {
   let formData = new FormData();
   //formData.append("grand_type", "password");
@@ -44,12 +42,13 @@ async function getTokenAsync(values, updateAdmin) {
       role = "Admin";
     } else if (role === "teacher") {
       role = "Teacher";
-    } else if (role === "user") {
-      role = "User";
+    } else if (role === "student") {
+      role = "Student";
     }
     window.location = `/${role}Page`;
     url = `https://localhost:5001/api/${role}s`;
     sessionStorage.setItem(tokenKey, data.access_token);
+    sessionStorage.setItem('userRole', role);
     console.log(data.access_token);
   } else {
     console.log("Error: ", response.status, data.errorText);
@@ -84,30 +83,20 @@ const MainPage = () => {
     <Container className="main-page">
       <Row>
         <Col>
-          <Figure style={{ padding: 0 }}>
+          <Figure style={{padding: 0}}>
             <Figure.Image
               width={400}
               height={400}
               alt="Logo"
               src={LogoImg}
-              style={{ padding: 0, margin: 0 }}
+              style={{padding: 0, margin: 0}}
             />
           </Figure>
         </Col>
         <Col>
-          <h1
-            style={{
-              color: "#6C5B7B",
-              margin: "25px 0",
-              fontFamily: "Montserrat",
-              fontSize: "72px",
-              fontWeight: "bold"
-            }}
-          >
-            Try the best courses from the best teachers!
-          </h1>
+          <h1 style={{color: '#6C5B7B',margin: '25px 0', fontFamily: 'Montserrat', fontSize: '72px', fontWeight: 'bold'}}>Try the best courses from the best teachers!</h1>
         </Col>
-      </Row>
+      </Row>       
       {/* <Button
         onClick={() => {
           getApiData();
@@ -120,21 +109,18 @@ const MainPage = () => {
 };
 
 export default class LandingPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      course: []
-    };
-  }
-  componentDidMount() {}
-  setCourse = course => {};
+  state = {
+    person: null,
+    adminData: null
+  };
+
   render() {
     return (
       <Router>
         <div className="bg">
           <Container fluid>
             <MenuBar />
-          </Container>
+          </Container> 
           <Route exact path="/">
             <MainPage />
           </Route>
@@ -150,20 +136,11 @@ export default class LandingPage extends React.Component {
           <Route exact path="/AdminPage">
             <AdminPage getDataFromApi={getDataFromApi} />
           </Route>
-          <Route exact path="/UserPage">
-            <UserPage getDataFromApi={getDataFromApi} />
+          <Route exact path="/StudentPage">
+            <StudentPage getDataFromApi={getDataFromApi} />
           </Route>
-          <Route exact path="/Constructor">
-            <ConstructorCourse />
-          </Route>
-          <Route exact path="/Constructor/Block">
-            <ConstructorBlock setCourse={this.setCourse()} />
-          </Route>
-          <Route exact path="/Constructor/Block/Lesson">
-            <ConstructorLesson />
-          </Route>
-          <Route exact path="/Constructor/Block/Lesson/Content">
-            <ConstructorContent />
+          <Route exact path="/TeacherPage">
+            <TeacherPage getDataFromApi={getDataFromApi} />
           </Route>
         </div>
       </Router>
