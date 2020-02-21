@@ -13,6 +13,7 @@ import ConstructorCourse from "./constructor/constructorCourse.js";
 import ConstructorBlock from "./constructor/constructorBlock.js";
 import ConstructorLesson from "./constructor/constructorLesson.js";
 import ConstructorContent from "./constructor/constructorContent.js";
+import ConstructorTest from "./constructor/constructorTest.js";
 import { Figure, Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 //import { getAllByDisplayValue } from "@testing-library/react";
@@ -62,7 +63,7 @@ async function getTokenAsync(values, updateAdmin) {
 //якщо токена вже не існує, то виводить 401, що ти не авторизований
 async function getDataFromApi(url) {
   const token = sessionStorage.getItem("accessToken");
-  console.log(token);
+
   console.log(1);
   const response = await fetch(url, {
     method: "GET",
@@ -162,10 +163,13 @@ export default class LandingPage extends React.Component {
             <ConstructorBlock />
           </Route>
           <Route exact path="/Constructor/Block/Lesson">
-            <ConstructorLesson />
+            <ConstructorLesson getDataFromApi={getDataFromApi} />
           </Route>
           <Route exact path="/Constructor/Block/Lesson/Content">
             <ConstructorContent />
+          </Route>
+          <Route exact path="/Constructor/Block/Lesson/Content/Test">
+            <ConstructorTest />
           </Route>
         </div>
       </Router>

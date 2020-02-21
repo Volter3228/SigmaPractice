@@ -1,37 +1,23 @@
-.constructorContent-wrapper {
+.constructorTest-question {
     position: absolute;
-    top: 45%;
-    left: 50%;
+    top: 17%;
+    left: 49%;
     transform: translate(-50%, -42%);
     box-sizing: border-box;
     max-width: 80%;
-    height: 70%;
-    border-radius: 20px;
+    height: 100px;
 
 
 }
-
-.constructorContent-test {
+.constructorTest-ansewers {
     position: absolute;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -42%);
     box-sizing: border-box;
     max-width: 80%;
-    height: 70%;
+    height: 60%;
     border-radius: 20px;
     border: 10px solid #F8B195;
     background-color: rgb(248, 178, 150, 0.5);
-}
-
-.constructorContent-text-area {
-    height: 300px;
-    width: 100%;
-    outline: none;
-    padding: 10px;
-    background: rgba(248, 177, 149, 0.5);
-    border: 10px solid #F8B195;
-    border-radius: 20px;
-
-
 }

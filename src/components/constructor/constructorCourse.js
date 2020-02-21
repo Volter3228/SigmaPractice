@@ -25,14 +25,25 @@ export default class ConstructorCourse extends React.Component {
     let lesson = {
       lessonId: -1,
       lessonName: "",
-      lessonContent: ""
+      lessonContent: {
+        type: "",
+        text: "",
+        tests: []
+      }
     };
-    let content = "";
 
+    let test = {
+      testId: -1,
+      question: "",
+      rightAnswerId: 0,
+      allAnswers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"]
+    };
     localStorage.setItem("course", JSON.stringify(course));
     localStorage.setItem("block", JSON.stringify(block));
     localStorage.setItem("lesson", JSON.stringify(lesson));
-    localStorage.setItem("content", JSON.stringify(content));
+    //localStorage.setItem("content", JSON.stringify(content));
+    localStorage.setItem("test", JSON.stringify(test));
+
     let storageCourse = JSON.parse(localStorage.getItem("course"));
     storageCourse.courseName = this.state.name;
     storageCourse.courseDescription = this.state.description;
@@ -81,7 +92,7 @@ export default class ConstructorCourse extends React.Component {
         <Button
           className="myButton"
           onClick={() => {
-            localStorage.removeItem("block");
+            localStorage.clear();
           }}
         >
           Clear localStorage
