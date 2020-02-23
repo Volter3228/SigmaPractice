@@ -62,7 +62,7 @@ const ModalDialog = props => {
 };
 
 function sendCourseIntoBd() {
-  console.log(JSON.stringify(getCourse()));
+  console.log(getCourse());
 }
 
 const PostCourse = () => {

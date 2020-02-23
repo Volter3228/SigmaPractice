@@ -14,6 +14,8 @@ import ConstructorBlock from "./constructor/constructorBlock.js";
 import ConstructorLesson from "./constructor/constructorLesson.js";
 import ConstructorContent from "./constructor/constructorContent.js";
 import ConstructorTest from "./constructor/constructorTest.js";
+import CourseInfo from "./courses/course.js";
+import CourseLesson from "./courses/courseLesson.js";
 import { Figure, Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 //import { getAllByDisplayValue } from "@testing-library/react";
@@ -143,6 +145,12 @@ export default class LandingPage extends React.Component {
           </Route>
           <Route exact path="/Courses">
             <CoursesPage />
+          </Route>
+          <Route exact path="/Courses/CourseInfo">
+            <CourseInfo />
+          </Route>
+          <Route exact path="/Courses/CourseInfo/Lesson">
+            <CourseLesson />
           </Route>
           <Route exact path="/Registration">
             <RegistrationPage />
