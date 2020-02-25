@@ -17,7 +17,7 @@ function setCourse(localCourse) {
   console.log(JSON.parse(localStorage.getItem("presentCourse")));
 }
 function getCourse() {
-  Axios.get(`${url}/api/Courses/1`).then(course => {
+  Axios.get(`${url}/api/Courses/21`).then(course => {
     localStorage.clear();
     let localCourse = course.data;
     Axios.get(`${url}/api/Courses/${localCourse.courseId}/Blocks`).then(
@@ -47,7 +47,7 @@ export default class coursesMainPage extends React.Component {
           onClick={() => {
             getCourse();
 
-            window.location = "/Courses/CourseInfo";
+            //window.location = "/Courses/CourseInfo";
           }}
         >
           get Course

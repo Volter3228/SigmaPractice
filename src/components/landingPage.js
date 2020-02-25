@@ -29,6 +29,25 @@ let tokenKey = "accessToken";
 //   alert(JSON.stringify(myJson));
 //   console.log(JSON.stringify(myJson));
 // }
+async function setDataToDB(url, postData, windowLocation) {
+  alert(1);
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(postData)
+  });
+  console.log(response);
+  const data = await response.json();
+ 
+  if (response.ok === true) {
+    window.location = windowLocation;
+    console.log(data);
+  } else {
+    console.log("Error: ", response.status, data.errorText);
+  }
+}
 
 async function getTokenAsync(values, updateAdmin) {
   let formData = new FormData();
@@ -153,7 +172,7 @@ export default class LandingPage extends React.Component {
             <CourseLesson />
           </Route>
           <Route exact path="/Registration">
-            <RegistrationPage />
+            <RegistrationPage setDataToDB={setDataToDB} />
           </Route>
           <Route exact path="/AdminPage">
             <AdminPage getDataFromApi={getDataFromApi} />

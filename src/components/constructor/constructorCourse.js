@@ -26,7 +26,7 @@ export default class ConstructorCourse extends React.Component {
       lessonId: -1,
       lessonName: "",
       lessonContent: {
-        type: "",
+        type: "text",
         text: "",
         tests: []
       }

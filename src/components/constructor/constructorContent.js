@@ -47,6 +47,7 @@ const TR = ({ rowIndex, name }) => {
 
 const Content = props => {
   if (props.type === "test") {
+    console.log(getLesson())
     return (
       <Container className="constructorContent-test">
         <Table responsive="sm" hover borderless>
@@ -103,11 +104,13 @@ const Settings = props => {
 export default class ConstructorContent extends React.Component {
   constructor(props) {
     super(props);
+ 
+
     this.state = {
       lessonName: "",
-      isChecked: true,
-      lessonContent: {},
-      type: ""
+      isChecked: false,
+      lessonContent: {  },
+      type: getLesson().lessonContent.type
     };
   }
 
@@ -161,11 +164,25 @@ export default class ConstructorContent extends React.Component {
     setCourse(storageCourse);
     this.setState({ content: storageLesson });
   };
-  toggleChange = () => {
+
+  toggleChange = type => {
+    let storageCourse = getCourse();
+    let storageBlock = getBlock();
+    let storageLesson = getLesson();
+    storageLesson.lessonContent.type = type;
+    storageBlock.blockLessons[storageLesson.lessonId] = storageLesson;
+    storageCourse.courseBlocks[storageBlock.blockId] = storageBlock;
+    setLesson(storageLesson);
+    setBlock(storageBlock);
+    setCourse(storageCourse);
     this.setState({
       isChecked: !this.state.isChecked
     });
+    console.log(getLesson());
   };
+  componentDidMount() {
+    console.log(getLesson());
+  }
   render() {
     return (
       <Container>
@@ -191,8 +208,10 @@ export default class ConstructorContent extends React.Component {
                   name="type"
                   id={1}
                   label="test"
+                  checked={getLesson().lessonContent.type === "test"}
                   onChange={() => {
-                    this.toggleChange();
+                    this.toggleChange("test");
+
                     this.setState({ type: "test" });
                   }}
                 />
@@ -200,10 +219,10 @@ export default class ConstructorContent extends React.Component {
                   type="radio"
                   name="type"
                   id={1}
+                  checked={getLesson().lessonContent.type === "text"}
                   label="text"
-                  checked={this.state.isChecked}
                   onChange={() => {
-                    this.toggleChange();
+                    this.toggleChange("text");
                     this.setState({ type: "text" });
                   }}
                 />
@@ -223,7 +242,11 @@ export default class ConstructorContent extends React.Component {
                 let lesson = {
                   lessonId: -1,
                   lessonName: "",
-                  lessonContent: ""
+                  lessonContent: {
+                    type: "text",
+                    text: "",
+                    tests: []
+                  }
                 };
                 setLesson(lesson);
                 window.location = "/Constructor/Block/Lesson";
