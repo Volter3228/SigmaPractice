@@ -1,26 +1,26 @@
-.constructor-wrapper {
+.constructorCourse-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -42%);
     box-sizing: border-box;
-    max-width: 1500px;
-    height: 760px;
+    width: 70%;
+    height: 70%;
     border-radius: 20px;
-    padding: 1px 110px 50px 60px;
+    padding: 1% 5% 3% 3%;
 }
 
-.constructor-input {
-    width: 500px;
+.constructorCourse-input {
+    width: 100%;
     font-weight: bold;
-    font-size: 24px;
-    border: 10px solid #F8B195;
-    border-radius: 20px;
+    font-size: 1vw;
+    border: 0.3vw solid #F8B195;
+    border-radius: 1vw;
     background-color: rgb(248, 178, 150, 0.5);
     font-style: normal;
-    margin-bottom: 10px;
-    height: 100px;
-    padding: 25px;
+    margin-bottom: 1%;
+    height: 15%;
+    padding: 2%;
     outline: none;
 }
 
@@ -39,26 +39,29 @@
     outline: none;
 }
 
-.constructor-font {
+.constructorCourse-font {
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 1.3vw;
     line-height: 29px;
     display: flex;
     align-items: center;
     text-align: center;
     color: #F8B195;
+    padding: 0.5%;
 }
 
-.constructor-text-area {
-    height: 300px;
+.constructorCourse-text-area {
+    height: 70%;
     width: 100%;
     outline: none;
-    padding: 10px;
+    padding: 1%;
     background: rgba(248, 177, 149, 0.5);
-    border: 10px solid #F8B195;
-    border-radius: 20px;
+    border: 0.3vw solid #F8B195;
+    border-radius: 1vw;
+    resize: none;
+    font-size: 1vw;
 }
 
 .constructor-button {
@@ -70,11 +73,11 @@
 
 }
 
-.myButton {
-    width: 350px;
-    height: 100px;
+.constructorCourse-addBlock {
+    width: 30%;
+    height: 15%;
     background-color: #C06C84;
-    border-radius: 10px;
+    border-radius: 1vw;
     border: 1px solid #C06C84;
     display: inline-block;
     cursor: pointer;
@@ -82,14 +85,28 @@
     font-style: normal;
     font-weight: bold;
     font-family: Montserrat;
-    font-size: 32px;
+    font-size: 1.5vw;
     line-height: 39px;
     padding: 9px 31px;
     text-decoration: none;
-    outline: none;
+
+    outline-color: #F8B195;
 }
 
-.myButton:hover {
-    outline: none;
+.constructorCourse-addBlock:hover {
+    border: 1px solid #F8B195;
     background-color: #F8B195;
+    outline-color: #F8B195;
+}
+
+.constructorCourse-addBlock:after {
+    border: 1px solid #F8B195;
+    background-color: #F8B195;
+    outline-color: #F8B195;
+}
+
+.constructorCourse-addBlock:active:after {
+    border: 1px solid #F8B195;
+    background-color: #F8B195;
+    outline-color: #F8B195;
 }

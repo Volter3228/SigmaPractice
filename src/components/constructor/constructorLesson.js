@@ -1,5 +1,5 @@
 import React from "react";
-import "./constructorBlock.css";
+import "./constructorLesson.css";
 import { Container, Button, Table, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
@@ -72,61 +72,66 @@ export default class ConstructorLesson extends React.Component {
   render() {
     return (
       <Container>
-        <Container className="constructorBlock-wrapper">
-          <p className="constructor-font">Block id:</p>
-          <input
-            className="constructor-input"
-            defaultValue={getBlock().blockId}
-          ></input>
-          <p className="constructor-font">Block name:</p>
-          <input
-            onChange={v => {
-              let newName = v.target.value;
-              this.changeBlockName(newName);
+        <Container className="constructorLesson-wrapper">
+          <Row>
+            <Col>
+              {" "}
+              <p className="constructorLesson-font">Block id:</p>
+              <input
+                className="constructorLesson-input"
+                defaultValue={getBlock().blockId}
+              ></input>
+            </Col>
+            <Col>
+              {" "}
+              <p className="constructorLesson-font">Block name:</p>
+              <input
+                onChange={v => {
+                  let newName = v.target.value;
+                  this.changeBlockName(newName);
+                }}
+                className="constructorLesson-input"
+                defaultValue={getBlock().blockName}
+              ></input>
+            </Col>
+          </Row>
+          <Container fluid className="constructorLesson-container-table">
+            <Table responsive="sm" hover borderless>
+              <thead>
+                <tr>
+                  <th>Lesson number</th>
+                  <th>Lesson Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                {JSON.parse(localStorage.getItem("block")).blockLessons.map(
+                  (el, i) => (
+                    <TR name={el.lessonName} rowIndex={i} />
+                  )
+                )}{" "}
+                <tr
+                  
+                  onClick={() => {
+                    this.createLesson();
+                  }}
+                >
+                  <td colSpan="3">
+                    -------------------------------------------------------------------------------Add
+                    lesson------------------------------------------------------------------------------------
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
+          </Container>{" "}
+          <Button
+            className="constructorLesson-btn"
+            onClick={() => {
+              window.location = "/Constructor/Block";
             }}
-            className="constructor-input"
-            defaultValue={getBlock().blockName}
-          ></input>
-          <Table responsive="sm" hover borderless>
-            <thead>
-              <tr>
-                <th>Lesson number</th>
-                <th>Lesson Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {JSON.parse(localStorage.getItem("block")).blockLessons.map(
-                (el, i) => (
-                  <TR name={el.lessonName} rowIndex={i} />
-                )
-              )}
-            </tbody>
-          </Table>
+          >
+            Back
+          </Button>
         </Container>
-        <Row style={{ paddingTop: "850px" }}>
-          <Col>
-            {" "}
-            <Button
-              className="constructorBlock-myButton"
-              onClick={() => {
-                window.location = "/Constructor/Block";
-              }}
-            >
-              Back
-            </Button>
-          </Col>
-          <Col>
-            {" "}
-            <Button
-              className="constructorBlock-myButton"
-              onClick={() => {
-                this.createLesson();
-              }}
-            >
-              Add new lesson
-            </Button>
-          </Col>
-        </Row>
       </Container>
     );
   }

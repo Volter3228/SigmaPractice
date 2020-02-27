@@ -60,19 +60,19 @@ export default class ConstructorCourse extends React.Component {
 
   render() {
     return (
-      <Container className="constructor-wrapper">
-        <p className="constructor-font">Add course name:</p>
+      <Container fluid className="constructorCourse-wrapper">
+        <p className="constructorCourse-font">Add course name:</p>
         <input
-          className="constructor-input"
+          className="constructorCourse-input"
           onChange={v => {
             let value = v.target.value;
 
             this.setState({ name: value });
           }}
         ></input>
-        <p className="constructor-font">Add course description:</p>
+        <p className="constructorCourse-font">Add course description:</p>
         <textarea
-          className="constructor-text-area"
+          className="constructorCourse-text-area"
           onChange={v => {
             let value = v.target.value;
             this.setState({ description: value });
@@ -80,7 +80,7 @@ export default class ConstructorCourse extends React.Component {
         ></textarea>
         <br />
         <Button
-          className="myButton"
+          className="constructorCourse-addBlock"
           onClick={() => {
             if (this.createStorage()) {
               window.location = "/Constructor/Block";
@@ -88,14 +88,6 @@ export default class ConstructorCourse extends React.Component {
           }}
         >
           Add the blocks
-        </Button>
-        <Button
-          className="myButton"
-          onClick={() => {
-            localStorage.clear();
-          }}
-        >
-          Clear localStorage
         </Button>
       </Container>
     );

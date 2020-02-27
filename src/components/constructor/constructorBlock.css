@@ -6,7 +6,7 @@
     box-sizing: border-box;
     max-width: 80%;
     height: 70%;
-    border-radius: 20px;
+    border-radius: 1vw;
     background: rgba(248, 177, 149, 0.5);
 
 }
@@ -30,7 +30,111 @@
     outline: none;
 }
 
-.constructorBlock-myButton:hover {
-    outline: none;
+.constructorBlock-btn:hover {
+    outline-color: #F8B195;
+    border: 1px solid #F8B195;
     background-color: #F8B195;
+}
+
+td[colspan="3"] {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1vw;
+    font-weight: bold;
+    padding: 0;
+}
+
+tr {
+    box-sizing: border-box;
+
+    padding: 0px;
+}
+
+td {
+    user-select: none;
+    font-size: 1vw;
+}
+
+th {
+    font-size: 1vw;
+}
+
+.constructorBlock-font {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.3vw;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    padding: 1%;
+}
+
+.constructorBlock-input {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1vw;
+    border: 0.1vw solid #F8B195;
+    border-radius: 1vw;
+    background-color: rgb(248, 178, 150, 0.0);
+    font-style: normal;
+    margin-bottom: 1%;
+    height: 15%;
+    padding: 2%;
+    outline: none;
+}
+
+.constructorBlock-container-table {
+    width: 100%;
+    height: 60%;
+    overflow: auto
+}
+
+.constructorBlock-table {
+    width: 100%;
+    height: 70%;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(192, 108, 132);
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(192, 108, 132, 0.4);
+    border-radius: 10px;
+}
+
+.constructorBlock-btn {
+    box-sizing: border-box;
+    width: 20%;
+    height: 100%;
+    background-color: #C06C84;
+    border-radius: 1vw;
+    border: 1px solid #C06C84;
+    display: inline-block;
+    cursor: pointer;
+    color: #F8B195;
+    font-style: normal;
+    font-weight: bold;
+    font-family: Montserrat;
+    font-size: 1.5vw;
+    line-height: 39px;
+    text-decoration: none;
+    outline: none;
+    margin-right: 1%;
+}
+
+.constructorBlock-col {
+    width: 100%;
+    height: 10%;
 }

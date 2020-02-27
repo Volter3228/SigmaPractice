@@ -47,10 +47,10 @@ const TR = ({ rowIndex, name }) => {
 
 const Content = props => {
   if (props.type === "test") {
-    console.log(getLesson())
+    console.log(getLesson());
     return (
-      <Container className="constructorContent-test">
-        <Table responsive="sm" hover borderless>
+      <Container fluid className="constructorContent-test">
+        <Table hover borderless>
           <thead>
             <tr>
               <th>Test number</th>
@@ -62,16 +62,26 @@ const Content = props => {
               (el, i) => (
                 <TR name={el.question} rowIndex={i} />
               )
-            )}
+            )}{" "}
+            <tr
+              onClick={() => {
+                props.createTest();
+              }}
+            >
+              <td colSpan="3">
+                -------------------------------------------------------------------------------Add
+                lesson------------------------------------------------------------------------------------
+              </td>
+            </tr>
           </tbody>
         </Table>
       </Container>
     );
   } else {
     return (
-      <Container fluid>
+      <Container fluid className="constructorContent-container">
         {" "}
-        <p className="constructor-font">Add lesson filling:</p>
+        <p className="constructorContent-font">Add lesson filling:</p>
         <textarea
           className="constructorContent-text-area"
           defaultValue={getLesson().lessonContent.text}
@@ -84,32 +94,15 @@ const Content = props => {
     );
   }
 };
-const Settings = props => {
-  if (props.type === "test") {
-    return (
-      <Col>
-        <Button
-          onClick={() => {
-            props.createTest();
-          }}
-        >
-          Add test
-        </Button>
-      </Col>
-    );
-  } else {
-    return <Col></Col>;
-  }
-};
+
 export default class ConstructorContent extends React.Component {
   constructor(props) {
     super(props);
- 
 
     this.state = {
       lessonName: "",
       isChecked: false,
-      lessonContent: {  },
+      lessonContent: {},
       type: getLesson().lessonContent.type
     };
   }
@@ -185,83 +178,76 @@ export default class ConstructorContent extends React.Component {
   }
   render() {
     return (
-      <Container>
-        <Container className="constructorContent-wrapper">
-          <Row>
-            <Col>
-              {" "}
-              <p className="constructor-font">Add lesson name:</p>
-              <input
-                className="constructor-input"
-                onChange={v => {
-                  let value = v.target.value;
-                  this.changeNameLesson(value);
-                }}
-                defaultValue={getLesson().lessonName}
-              ></input>
-            </Col>
-            <Col>
-              <p className="constructor-font">Lesson type:</p>
-              <Form>
-                <Form.Check
-                  type="radio"
-                  name="type"
-                  id={1}
-                  label="test"
-                  checked={getLesson().lessonContent.type === "test"}
-                  onChange={() => {
-                    this.toggleChange("test");
-
-                    this.setState({ type: "test" });
-                  }}
-                />
-                <Form.Check
-                  type="radio"
-                  name="type"
-                  id={1}
-                  checked={getLesson().lessonContent.type === "text"}
-                  label="text"
-                  onChange={() => {
-                    this.toggleChange("text");
-                    this.setState({ type: "text" });
-                  }}
-                />
-              </Form>
-            </Col>
-            <Settings type={this.state.type} createTest={this.createTest} />
-          </Row>
-          <Content type={this.state.type} createText={this.createText} />
-        </Container>
-        <Row style={{ paddingTop: "850px" }}>
+      <Container className="constructorContent-wrapper">
+        <Row>
           <Col>
             {" "}
-            <Button
-              className="constructorBlock-myButton"
-              onClick={() => {
-                localStorage.removeItem("lesson");
-                let lesson = {
-                  lessonId: -1,
-                  lessonName: "",
-                  lessonContent: {
-                    type: "text",
-                    text: "",
-                    tests: []
-                  }
-                };
-                setLesson(lesson);
-                window.location = "/Constructor/Block/Lesson";
+            <p className="constructorContent-font">Add lesson name:</p>
+            <input
+              className="constructorContent-input"
+              onChange={v => {
+                let value = v.target.value;
+                this.changeNameLesson(value);
               }}
-            >
-              Back
-            </Button>
+              defaultValue={getLesson().lessonName}
+            ></input>
           </Col>
           <Col>
-            {" "}
-            <Button className="constructorBlock-myButton" onClick={() => {}}>
-              Create
-            </Button>
+            <p className="constructorContent-font">Lesson type:</p>
+            <Form>
+              <Form.Check
+                type="radio"
+                name="type"
+                id={1}
+                label="test"
+                checked={getLesson().lessonContent.type === "test"}
+                onChange={() => {
+                  this.toggleChange("test");
+
+                  this.setState({ type: "test" });
+                }}
+              />
+              <Form.Check
+                type="radio"
+                name="type"
+                id={1}
+                checked={getLesson().lessonContent.type === "text"}
+                label="text"
+                onChange={() => {
+                  this.toggleChange("text");
+                  this.setState({ type: "text" });
+                }}
+              />
+            </Form>
           </Col>
         </Row>
+        <Container fluid className="constructorContent-container">
+          <Content
+            type={this.state.type}
+            createText={this.createText}
+            createTest={this.createTest}
+          />
+        </Container>
+
+        <Button
+          className="constructorContent-btn"
+          onClick={() => {
+            localStorage.removeItem("lesson");
+            let lesson = {
+              lessonId: -1,
+              lessonName: "",
+              lessonContent: {
+                type: "text",
+                text: "",
+                tests: []
+              }
+            };
+            setLesson(lesson);
+            window.location = "/Constructor/Block/Lesson";
+          }}
+        >
+          Back
+        </Button>
       </Container>
     );
   }

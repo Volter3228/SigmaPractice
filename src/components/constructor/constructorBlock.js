@@ -158,14 +158,22 @@ const PostCourse = () => {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <ButtonToolbar>
+    <ButtonToolbar className="constructorBlock-col">
+      {" "}
       <Button
-        className="constructorBlock-myButton"
+        className="constructorBlock-btn"
+        onClick={() => {
+          window.location = "/Constructor";
+        }}
+      >
+        Back
+      </Button>
+      <Button
+        className="constructorBlock-btn"
         onClick={() => setModalShow(true)}
       >
         Save
       </Button>
-
       <ModalDialog
         show={modalShow}
         onHideSave={() => {
@@ -217,14 +225,15 @@ export default class ConstructorBlock extends React.Component {
 
   render() {
     return (
-      <Container>
-        <Container className="constructorBlock-wrapper">
-          <p className="constructor-font">Course name:</p>
-          <input
-            className="constructor-input"
-            defaultValue={this.state.storageCourse.courseName}
-          ></input>
-          <Table responsive="sm" hover borderless>
+      <Container className="constructorBlock-wrapper">
+        <p className="constructorBlock-font">Course name:</p>
+        <input
+          className="constructorBlock-input"
+          defaultValue={this.state.storageCourse.courseName}
+          readOnly
+        ></input>
+        <Container fluid className="constructorBlock-container-table">
+          <Table hover borderless className="constructorBlock-table">
             <thead>
               <tr>
                 <th>Block number</th>
@@ -240,37 +249,21 @@ export default class ConstructorBlock extends React.Component {
                   blockLength={el.blockLessons.length}
                 />
               ))}
+              <tr
+                className="constructorBlock-tr-addBlock"
+                onClick={() => {
+                  this.createBlock();
+                }}
+              >
+                <td colSpan="3">
+                  -------------------------------------------------------------------------------Add
+                  block------------------------------------------------------------------------------------
+                </td>
+              </tr>
             </tbody>
           </Table>
         </Container>
-        <Row style={{ paddingTop: "850px" }}>
-          <Col>
-            {" "}
-            <Button
-              className="constructorBlock-myButton"
-              onClick={() => {
-                window.location = "/Constructor";
-              }}
-            >
-              Back
-            </Button>
-          </Col>
-          <Col>
-            {" "}
-            <Button
-              className="constructorBlock-myButton"
-              onClick={() => {
-                this.createBlock();
-              }}
-            >
-              Add new block
-            </Button>
-          </Col>
-          <Col>
-            {" "}
-            <PostCourse />
-          </Col>
-        </Row>
+        <PostCourse />
       </Container>
     );
   }

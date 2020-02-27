@@ -73,32 +73,29 @@ export default class ConstructorTest extends React.Component {
   };
   render() {
     return (
-      <Container>
-        <Container fluid className="constructorTest-question">
-          <p className="constructor-font">Question:</p>
-          <input
-            onChange={v => {
-              let newName = v.target.value;
-              this.changeQuestion(newName);
-            }}
-            className="constructor-input"
-            defaultValue={getTest().question}
-          ></input>
-        </Container>
-
-        <Container className="constructorTest-ansewers">
+      <Container className="constructorTest-wrapper">
+        <p className="constructorTest-font">Question:</p>
+        <input
+          onChange={v => {
+            let newName = v.target.value;
+            this.changeQuestion(newName);
+          }}
+          className="constructorTest-input"
+          defaultValue={getTest().question}
+        ></input>
+        <Container fluid className="constructorTest-container">
           <Row>
             {" "}
             {getTest().allAnswers.map((el, i) => (
-              <Col>
+              <Col className="constructorTest-col">
                 {" "}
-                <p className="constructor-font">Answer {i + 1}:</p>
+                <p className="constructorTest-font">Answer {i + 1}:</p>
                 <input
                   onChange={v => {
                     let newAnswer = v.target.value;
                     this.changeAnswer(newAnswer, i);
                   }}
-                  className="constructor-input"
+                  className="constructorTest-input-answer"
                   defaultValue={el}
                 ></input>
                 <Form.Check
@@ -117,55 +114,43 @@ export default class ConstructorTest extends React.Component {
                 />
               </Col>
             ))}
-          </Row>
-        </Container>
-        <Row style={{ paddingTop: "850px" }}>
-          <Col>
-            {" "}
-            <Button
-              className="constructorBlock-myButton"
-              onClick={() => {
-                localStorage.removeItem("test");
-                let test = {
-                  testId: -1,
-                  question: "",
-                  rightAnswerId: 0,
-                  allAnswers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"]
-                };
-                setTest(test);
-                window.location = "/Constructor/Block/Lesson/Content";
-              }}
-            >
-              Back
-            </Button>
-          </Col>
-          <Col>
-            {" "}
-            <Button
-              className="constructorBlock-myButton"
-              onClick={() => {
-                let storageCourse = getCourse();
-                let storageBlock = getBlock();
-                let storageLesson = getLesson();
-                let storageTest = getTest();
+          </Row>{" "}
+        </Container>{" "}
+        <Button
+          className="constructorTest-btn"
+          onClick={() => {
+            localStorage.removeItem("test");
+            let test = {
+              testId: -1,
+              question: "",
+              rightAnswerId: 0,
+              allAnswers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"]
+            };
+            setTest(test);
+            window.location = "/Constructor/Block/Lesson/Content";
+          }}
+        >
+          Back
+        </Button>{" "}
+        <Button
+          className="constructorTest-btn"
+          onClick={() => {
+            let storageCourse = getCourse();
+            let storageBlock = getBlock();
+            let storageLesson = getLesson();
+            let storageTest = getTest();
 
-                storageLesson.lessonContent.tests[
-                  storageTest.testId
-                ] = storageTest;
-                storageBlock.blockLessons[
-                  storageLesson.lessonId
-                ] = storageLesson;
-                storageCourse.courseBlocks[storageBlock.blockId] = storageBlock;
-                setTest(storageTest);
-                setLesson(storageLesson);
-                setBlock(storageBlock);
-                setCourse(storageCourse);
-              }}
-            >
-              Create
-            </Button>
-          </Col>
-        </Row>
+            storageLesson.lessonContent.tests[storageTest.testId] = storageTest;
+            storageBlock.blockLessons[storageLesson.lessonId] = storageLesson;
+            storageCourse.courseBlocks[storageBlock.blockId] = storageBlock;
+            setTest(storageTest);
+            setLesson(storageLesson);
+            setBlock(storageBlock);
+            setCourse(storageCourse);
+          }}
+        >
+          Create
+        </Button>
       </Container>
     );
   }
