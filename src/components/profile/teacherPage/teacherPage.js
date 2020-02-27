@@ -3,6 +3,7 @@ import axios from "axios";
 import "./teacherPage.css";
 import { Container, Row, Col, Card, ListGroup, Image } from "react-bootstrap";
 
+
 const baseUrl = "https://localhost:5001/api/";
 let email = "";
 
@@ -43,16 +44,21 @@ export default class UserPage extends Component {
             let courseData = [...result.data];
             console.log(courseData);
             courseData.forEach(course => {
-              let obj = {
-                name: course.courseName
-              };
-              this.setState(prevState => ({
-                ...prevState,
-                userInfo: {
-                  ...prevState.userInfo,
-                  courses: [...prevState.userInfo.courses, obj]
-                }
-              }));
+              axios
+                .get(`${baseUrl}Courses/getAmountOfSubscribers/${course.courseId}`)
+                .then(amount => {
+                  let obj = {
+                    name: course.courseName,
+                    amountOfSubscribers: amount.data
+                  };
+                  this.setState(prevState => ({
+                    ...prevState,
+                    userInfo: {
+                      ...prevState.userInfo,
+                      courses: [...prevState.userInfo.courses, obj]
+                    }
+                  }));
+                });
             });
           });
       });
@@ -73,7 +79,7 @@ export default class UserPage extends Component {
                   <a className="teacher-course-link" href="#">
                     {course.name}
                   </a>
-                  <h3>amount of subscribers: </h3>
+                  <h3>amount of subscribers: {course.amountOfSubscribers} </h3>
                 </Container>
               );
             })}
@@ -87,9 +93,7 @@ export default class UserPage extends Component {
                 <a href="#" className="course-title">
                   {course.name}
                 </a>
-                <h4 className="course-progress">
-                  {(course.testsPassed / course.countOfTests) * 100}% completed
-                </h4>
+                <h4>amount of subscribers: {course.amountOfSubscribers} </h4>
               </div>
             );
           })}
@@ -136,7 +140,8 @@ export default class UserPage extends Component {
             <h1>Last courses</h1>
             {lastAddedCourses}
             <Container className="btn-container" fluid>
-              <button className="edit-btn">Edit account</button>
+              <button style={{marginRight: "10px"}} className="edit-btn">Edit account</button>
+              <a className="create-link" href="/Constructor"><button className="edit-btn">Create course</button></a>
             </Container>
           </Col>
 

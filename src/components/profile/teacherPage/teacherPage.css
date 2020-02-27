@@ -7,3 +7,8 @@
     font-weight: bold;
     display: block;
 }
+
+.create-link:hover {
+    color: #6C5B7B;
+    text-decoration: none;
+}

@@ -1,0 +1,116 @@
+.course-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -43%);
+    box-sizing: border-box;
+    max-width: 80%;
+    height: 80%;
+    border-radius: 20px;
+    background: rgba(248, 177, 149, 0.5);
+    padding: 60px;
+}
+
+.course-list-item {
+    height: 30px;
+    padding: 0;
+    color: #6C5B7B;
+    outline: none;
+    background: rgba(192, 108, 132);
+    border: 0px;
+    font-weight: bold;
+}
+
+.unselectable {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+}
+
+.course-list-item:hover {
+    height: 30px;
+    background: rgba(248, 177, 149, 0.5);
+    outline: none;
+    border: 0px;
+    font-weight: bold;
+}
+
+.course-list-item:focus {
+    height: 30px;
+    background: rgba(248, 177, 149, 0.5);
+    outline: none;
+    border: 0px;
+    font-weight: bold;
+}
+
+.course-accordion {
+    max-width: 60%;
+    border-radius: 20px;
+    background: rgba(192, 108, 132);
+    border: 0px solid #C06C84;
+    font-weight: bold;
+    color: #F8B195;
+    font-size: 28px;
+    line-height: 49px;
+}
+
+.course-accordion-toggle {
+    background: rgba(192, 108, 132);
+    font-weight: bold;
+}
+
+.course-accordion-card {
+    border: 1px solid #F8B195;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.course-accordion-card-body {
+    border: 0px solid #C06C84;
+    background: rgba(192, 108, 132);
+}
+
+.text-font {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.course-info-title {
+    font-size: 56px;
+    line-height: 68px;
+    color: #6C5B7B;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.course-info-author-name {
+    font-size: 24px;
+    line-height: 29px;
+    color: rgba(108, 91, 123, 0.6);
+    padding-left: 5px;
+}
+
+.course-info-subscribers {
+    color: #6C5B7B;
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 20px;
+    display: flex;
+    align-content: flex-end;
+}
+
+.course-info-description {
+    font-size: 24px;
+    line-height: 29px;
+    color: rgba(108, 91, 123, 0.6);
+}
+
+.course-info-blocks-description {
+    font-size: 28px;
+    line-height: 39px;
+    color: #6C5B7B;
+}
+

@@ -3,7 +3,7 @@ import "./landingPage.css";
 
 import AuthorizationPage from "./authorization/authorization.js";
 import RegistrationPage from "./registration/registration.js";
-import CoursesPage from "./courses/coursesMainPage.js";
+import CoursesPage from "./courses/coursesList/coursesList.js";
 import MenuBar from "./menuBar.js";
 import AdminPage from "./profile/adminPage.js";
 import LogoImg from "./NavLogo.png";
@@ -14,8 +14,8 @@ import ConstructorBlock from "./constructor/constructorBlock.js";
 import ConstructorLesson from "./constructor/constructorLesson.js";
 import ConstructorContent from "./constructor/constructorContent.js";
 import ConstructorTest from "./constructor/constructorTest.js";
-import CourseInfo from "./courses/course.js";
-import CourseLesson from "./courses/courseLesson.js";
+import CourseInfo from "./courses/course/course.js"
+import CourseLesson from "./courses/lesson/lesson.js";
 import { Figure, Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 //import { getAllByDisplayValue } from "@testing-library/react";

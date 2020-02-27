@@ -43,6 +43,15 @@
     height: 100px;
 }
 
+.list-group-item-editing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #61D4B3;
+    border-bottom: 4px solid rgba(108, 91, 123, 0.7);
+    height: 100px;
+}
+
 .title {
     color: rgba(108, 91, 123, 0.6);
     font-family: Montserrat;
@@ -57,6 +66,16 @@
     font-size: 24px;
     line-height: 29px;
     color: #6C5B7B;
+}
+
+.edit-full-name {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: #6C5B7B;
+    background-color: #61D4B3;
+    border: 0;
 }
 
 .user-email {

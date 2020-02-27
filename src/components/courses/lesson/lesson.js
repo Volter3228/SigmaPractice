@@ -1,5 +1,5 @@
 import React from "react";
-import "./courseLesson.css";
+import "./lesson.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 function getLesson() {
   return JSON.parse(localStorage.getItem("presentLesson"));
