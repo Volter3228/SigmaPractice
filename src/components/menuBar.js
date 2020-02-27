@@ -11,27 +11,6 @@ const Pad0 = {
   margin: 0
 };
 
-const navbar = {
-  backgroundColor: "#6C5B7B",
-  height: "100px",
-  margin: "10px 20px 0 20px",
-  padding: "10px 30px",
-  background: "rgba(248, 177, 149, 0.8)",
-  borderRadius: "20px"
-};
-
-const linkWrapper = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "200px",
-  height: "60px",
-  background: "#C06C84",
-  border: "3px solid #C06C84",
-  borderRadius: "20px",
-  marginRight: "20px"
-};
-
 const profileWrapper = {
   display: "flex",
   alignItems: "center",
@@ -45,15 +24,7 @@ const profileWrapper = {
 };
 
 const link = {
-  display: "inline-block",
-  fontFamily: "Montserrat",
-  color: "#6C5B7B",
-  fontStyle: "normal",
-  textAlign: "center",
-  fontWeight: "bold",
-  fontSize: "16px",
-  lineHeight: "20px",
-  background: "#C06C84"
+  fontFamily: "Montserrat"
 };
 
 let URL_href = window.location.pathname;
@@ -93,15 +64,15 @@ const Logotype = () => {
 
 const Links = () => {
   return (
-    <Navbar.Collapse className="justify-content-start">
-      <Nav defaultActiveKey="/" as="ul">
-        <Nav.Item style={linkWrapper} as="li">
-          <Nav.Link style={link} href="/">
+    <Navbar.Collapse className="menuBar-navbar-collapse">
+      <Nav defaultActiveKey="/" as="ul" className="menuBar-nav">
+        <Nav.Item className="menuBar-btn" as="li">
+          <Nav.Link className="menuBar-btn-link" style={link} href="/">
             Home Page
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item style={linkWrapper} as="li">
-          <Nav.Link style={link} href="/Courses">
+        <Nav.Item className="menuBar-btn" as="li">
+          <Nav.Link className="menuBar-btn-link" style={link} href="/Courses">
             Courses
           </Nav.Link>
         </Nav.Item>
@@ -113,10 +84,14 @@ const Links = () => {
 const Profile = () => {
   if (!sessionStorage.getItem("accessToken")) {
     return (
-      <Navbar.Collapse className="justify-content-end">
-        <Nav defaultActiveKey="/">
-          <Nav.Item style={linkWrapper}>
-            <Nav.Link style={link} href="/Authorization">
+      <Navbar.Collapse className="menuBar-navbar-collapse justify-content-end">
+        <Nav defaultActiveKey="/" className="menuBar-nav-sign-in">
+          <Nav.Item className="menuBar-btn">
+            <Nav.Link
+              className="menuBar-btn-link"
+              style={link}
+              href="/Authorization"
+            >
               Sign In
             </Nav.Link>
           </Nav.Item>
@@ -129,11 +104,11 @@ const Profile = () => {
         <Nav defaultActiveKey="/">
           <Nav.Item style={profileWrapper}>
             <Dropdown style={link}>
-              <Dropdown.Toggle id="toggle" style={link}>U</Dropdown.Toggle>
+              <Dropdown.Toggle id="toggle" style={link}>
+                U
+              </Dropdown.Toggle>
 
-              <Dropdown.Menu
-                alignRight
-              >
+              <Dropdown.Menu alignRight>
                 {(sessionStorage.userRole === "Admin" && (
                   <Dropdown.Item href="/AdminPage">My Profile</Dropdown.Item>
                 )) ||
@@ -148,7 +123,8 @@ const Profile = () => {
                     </Dropdown.Item>
                   ))}
                 <Dropdown.Item href="/Courses">Courses List</Dropdown.Item>
-                <Dropdown.Item href="/"
+                <Dropdown.Item
+                  href="/"
                   onClick={() => {
                     window.sessionStorage.removeItem("accessToken");
                     window.location.reload(false);
@@ -167,7 +143,7 @@ const Profile = () => {
 
 const NavbarMenu = () => {
   return (
-    <Navbar style={navbar} className="navbar" fixed="top">
+    <Navbar className="menuBar-navBar" fixed="top">
       <Logotype />
       <Links />
       <Profile />

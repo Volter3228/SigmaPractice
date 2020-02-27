@@ -1,12 +1,12 @@
 .inner-container {
     background-color: '#f7f7f7';
-    margin: 0;
-    padding: 0;
-    position: "absolute"; 
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    margin: 0%;
+    padding: 0%;
+    position: "absolute";
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -16,57 +16,66 @@
     left: 50%;
     transform: translate(-50%, -43%);
     box-sizing: border-box;
-    max-width: 600px;
-    width: 100%;
-    height: 700px;
-    padding: 40px 100px 125px 100px;
-    text-align: center ;
+
+    width: 30%;
+    height: 75%;
+    padding: 2% 4% 5% 4%;
+    text-align: center;
     border-radius: 20px;
     background: rgba(248, 177, 149, 0.8);
 }
 
-.login-title, a, input[type=text], input[type=password], .login-btn, .login-subtitle, .login-input, .checkbox-container {
+.login-title,
+a,
+input[type=text],
+input[type=password],
+.login-btn,
+.login-subtitle,
+.login-input,
+.checkbox-container {
     color: #6C5B7B;
     font-weight: bold;
     font-style: normal;
 }
 
 .login-title {
-    font-size: 96px;
-    margin-bottom: 10px;
+    font-size: 6vw;
+    margin-bottom: 1%;
     padding-bottom: 0px;
 }
 
 .login-subtitle {
-    font-size: 36px;
-    padding-bottom: 40px;
+    font-size: 1vw;
+    padding-bottom: 2%;
 }
 
 ::placeholder {
     color: rgba(108, 91, 123, 0.5);
 }
 
-input[type=text], input[type=password] {
+input[type=text],
+input[type=password] {
     width: 100%;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 1vw;
     border: 3px solid #C06C84;
     background-color: rgba(255, 255, 255, 0);
     font-style: normal;
-    margin: 25px 0;
-    height: 60px;
-    padding: 25px;
+    margin: 1.5% 0%;
+    height: 10%;
+    padding: 1.5%;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-    outline: #e4829e solid 3px ;
+input[type=text]:focus,
+input[type=password]:focus {
+    outline: #e4829e solid 0.5%;
     box-shadow: 0 0 10px #e4829e;
 }
 
 .input-feedback {
     position: absolute;
     color: rgb(235, 54, 54);
-    margin-top: -15px ;
+    margin-top: -15px;
     font-size: 14px;
     margin-bottom: 10px;
     float: left;
@@ -75,11 +84,11 @@ input[type=text]:focus, input[type=password]:focus {
 .login-btn {
     margin: 25px 0;
     width: 100%;
-    height: 65px;
+    height: 100%;
     border-radius: 10px;
     background: #C06C84;
     border: 3px solid #C06C84;
-    font-size: 24px;
+    font-size: 1.5vw;
 }
 
 .login-btn:hover {
@@ -88,45 +97,46 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 a {
-    font-size: 16px;
+    font-size: 1vw;
 }
 
 input[type=checkbox].checkbox {
-    position:absolute; 
-    z-index:-1000; 
-    left:-1000px;
-    overflow: hidden; 
-    clip: rect(0 0 0 0); 
-    height:1px; 
-    width:1px; 
-    margin:-1px; 
-    padding:0; 
-    border:0;
-    padding-left:33px;
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    padding-left: 33px;
     float: left;
-    line-height:20px;
-    background-repeat:no-repeat;
+    line-height: 20px;
+    background-repeat: no-repeat;
     background-position: 0 0;
-    vertical-align:middle;
-    cursor:pointer;
+    vertical-align: middle;
+    cursor: pointer;
 }
 
 label.checkbox-container {
     margin-top: 15px;
-    padding-left:33px;
+    padding-left: 33px;
     border: 0;
     float: left;
-    line-height:28px;
-    background-repeat:no-repeat;
+    line-height: 28px;
+    background-repeat: no-repeat;
     background-position: 0 0;
-    font-size:16px;
-    vertical-align:middle;
-    cursor:pointer;
+    font-size: 1vw;
+    vertical-align: middle;
+    cursor: pointer;
 }
 
-input[type=checkbox].checkbox:checked + label.checkbox-container {
+input[type=checkbox].checkbox:checked+label.checkbox-container {
     background-position: 0 -28px;
 }
+
 label.checkbox-container {
-background-image:url('checkbox.png');
+    background-image: url('checkbox.png');
 }

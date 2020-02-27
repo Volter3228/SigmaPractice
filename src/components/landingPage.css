@@ -13,16 +13,16 @@
     left: 50%;
     transform: translate(-50%, -43%);
     box-sizing: border-box;
-    max-width: 1500px;
-    height: 730px;
+    width: 70%;
+    height: 70%;
     border-radius: 20px;
     background: rgba(248, 177, 149, 0.8);
-    padding: 160px;
+    padding: 7%;
 }
 
 Row {
     width: 80%;
-    height: 400px; 
+    height: 100%; 
     padding:0;
     margin: 0; 
     position: absolute; 

@@ -105,7 +105,7 @@ async function getDataFromApi(url) {
 
 const MainPage = () => {
   return (
-    <Container className="main-page">
+    <Container fluid className="main-page">
       <Row>
         <Col>
           <Figure style={{ padding: 0 }}>
@@ -114,7 +114,7 @@ const MainPage = () => {
               height={400}
               alt="Logo"
               src={LogoImg}
-              style={{ padding: 0, margin: 0 }}
+           
             />
           </Figure>
         </Col>
@@ -122,9 +122,9 @@ const MainPage = () => {
           <h1
             style={{
               color: "#6C5B7B",
-              margin: "25px 0",
+              margin: "2% 0%",
               fontFamily: "Montserrat",
-              fontSize: "72px",
+              fontSize: "3.5vw",
               fontWeight: "bold"
             }}
           >

@@ -59,8 +59,8 @@ const RegistrationPage = props => (
       return (
         <div className="inner-container">
           <div className="register-box">
-            <h1 className="register-title">P</h1>
-            <h3 className="register-subtitle">Pustota</h3>
+            <h1 className="register-title">E</h1>
+            <h3 className="register-subtitle">Eduraise</h3>
 
             <form onSubmit={handleSubmit}>
               <input

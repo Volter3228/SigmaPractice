@@ -34,8 +34,8 @@ const AuthorizationPage = props => (
       return (
         <div className="inner-container">
           <div className="login-box">
-            <h1 className="login-title">P</h1>
-            <h3 className="login-subtitle">Pustota</h3>
+            <h1 className="login-title">E</h1>
+            <h3 className="login-subtitle">Eduraise</h3>
             <form onSubmit={handleSubmit}>
               <input
                 className={errors.email && touched.email && "errors"}
