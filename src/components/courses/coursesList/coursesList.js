@@ -1,22 +1,18 @@
 import React, { Component } from "react";
 import "./coursesList.css";
-//import { Dropdown } from "react-bootstrap";
-import { Button, Row, Col } from "react-bootstrap";
+import {
+  Button,
+  ButtonToolbar,
+  Dropdown,
+  DropdownButton,
+  Row,
+  Col,
+  Card
+} from "react-bootstrap";
 
 import { Table, Container } from "react-bootstrap";
 
-//import { MDBCol, MDBInput } from "mdbreact";
-const SearchPage = () => {
-  return (
-    <Row>
-      <Col md="6">
-        <input placeholder="Search" type="text" />
-      </Col>
-    </Row>
-  );
-};
-
-export default class coursesList extends Component {
+export default class Courses extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,18 +25,22 @@ export default class coursesList extends Component {
   componentDidMount() {
     this.refreshList();
   }
-
+  setCourse = course => {
+    localStorage.setItem("currentCourseId", JSON.stringify(course.courseId));
+  };
   refreshList() {
     fetch("https://localhost:5001/api/Courses")
       .then(response => response.json())
       .then(data => {
-        this.setState({ courses: data });
+        this.setState({ courses: data }, () => {
+          console.log(this.state);
+        });
       });
-    fetch("https://localhost:5001/api/Categories")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ categories: data });
-      });
+    // fetch("https://localhost:5001/api/Categories")
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     this.setState({ categories: data });
+    //   });
   }
 
   handleClickOutside() {
@@ -57,56 +57,72 @@ export default class coursesList extends Component {
     }));
   }
   render() {
-    //  const{list} = this.props
     const { courses } = this.state;
-    const { listOpen, headerTitle } = this.state;
     const { categories } = this.state;
     return (
-      <Container>
-        <div className="dd-wrapper">
-          <SearchPage />
-          <div className="dd-header" onClick={() => this.toggleList()}>
-            <div className="dd-header-title">{headerTitle}</div>
-            {/* {listOpen
-                ? <FontAwesome name="angle-up" size="2x"/>
-                : <FontAwesome name="angle-down" size="2x"/>
-              } */}
-          </div>
-          {listOpen && (
-            <ul className="dd-list">
+      <Container className="bg">
+        {/* <Container>
+          <Row className="justify-content-md-center" xs={6} md={4}>
+            <DropdownButton id="dropdown-basic-button" title="Updating date:">
               {courses.map(course => (
-                <li className="dd-list-item" key={course.courseId}>
+                <Dropdown.Item key={course.courseId}>
                   {course.dataOfCreation}
-                </li>
+                </Dropdown.Item>
               ))}
-            </ul>
-          )}
-        </div>
-        <div>
-          <ul>
+            </DropdownButton>
+          </Row>
+        </Container> */}
+        {/* <Row>
+          <Col xs={6} md={4}>
+            <p>Popular categories:</p>
+          </Col>
+        </Row> */}
+        {/* <Container>
+          <Row>
+            {" "}
             {categories.map(category => (
-              <Button key={category.categoryId}>{category.categoryName}</Button>
+              <Col key={category.categoryId}>
+                <Card className="categorystl">
+                  <Card.Body>
+                    <Card.Title>{category.categoryName}</Card.Title>
+                  </Card.Body>
+                </Card>
+              </Col>
             ))}
-          </ul>
-        </div>
-        <Table className="mt-4" striped bordered hover size="sm">
-          <thead>
-            <tr>
-              <th>Course:</th>
-              <th>Rating:</th>
-              <th>Description:</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.map(course => (
-              <tr key={course.courseId}>
-                <td>{course.courseName}</td>
-                <td>{course.courseRating}</td>
-                <td>{course.description}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+          </Row>
+          <br />
+        </Container> */}{" "}
+        <Container className="courseList-content">
+          <input
+            className="search"
+            type="text"
+            placeholder="Search course..."
+          />
+          <Container className="courseList-content-list">
+            {" "}
+            <Row>
+              {courses.map(course => (
+                <Col xs={6} md={4} key={course.courseId}>
+                  <Card className="coursestl">
+                    <Card.Body
+                      onClick={() => {
+                        this.setCourse(course);
+                        window.location = "/Courses/CourseInfo";
+                      }}
+                    >
+                      <Card.Title>{course.courseName}</Card.Title>
+                      <Card.Text>
+                        {course.description}
+                        <br />
+                        {/* Rating: {course.courseRating} */}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </Container>
       </Container>
     );
   }

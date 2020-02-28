@@ -22,11 +22,11 @@
 }
 
 .unselectable {
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;  
+    -khtml-user-select: none;   
+    -moz-user-select: none;     
+    -ms-user-select: none;      
 }
 
 .course-list-item:hover {
